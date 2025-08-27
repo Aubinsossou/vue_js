@@ -1,0 +1,135 @@
+/*GENERAL*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: #000000;
+  font-family: system-ui;
+}
+
+a{
+    text-decoration:none;
+}
+ul li {
+  list-style: none;
+}
+
+img,
+svg {
+  width: 100%;
+  height: auto;
+}
+
+.container {
+  max-width: 1074px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+main.main {
+  min-height: calc(100vh - (105px + 124px));
+}
+
+/*HEADER*/
+
+.header {
+  background-color: #fff;
+  box-shadow: 0px 10px 35px 0px #0000000d;
+}
+.header_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.header_left {
+  display: block;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background-color: #7a96ff;
+  text-align: center;
+}
+.header_left span {
+  line-height: 85px;
+}
+.header_right {
+  display: flex;
+  gap: 45px;
+}
+
+
+/*Nos services*/
+
+.services_content h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-top: 38px;
+  margin-bottom: 43px;
+}
+.services_content p {
+  max-width: 699px;
+  margin-right: auto;
+  margin-bottom: 52px;
+  margin-left: auto;
+  text-align: center;
+}
+.services_list {
+  display: flex;
+  padding: 12px 0;
+  justify-content: space-between;
+  gap: 20px;
+}
+.active {
+  box-shadow: 0px 4px 150px 50px #00000033 !important;
+  transform: scale(1.2);
+
+}
+.services_list_item {
+  width: 241px;
+  text-align: center;
+  box-shadow: 0px 4px 9px 0px #00000033;
+  padding: 15px;
+  border-radius: 6px;
+  transition: 0.5s;
+}
+.services_list_item img {
+  display: inline-block;
+  width: 64px;
+}
+.services_list_item h3 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+.services_list_item p {
+  line-height: 25px;
+  display: -webkit-box;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+
+
+/*FOOTER*/
+
+.footer {
+  background-color: #2d5298;
+}
+.footer_content {
+  min-height: 124px;
+  text-align: center;
+}
+.footer_content p {
+  color: #fff;
+  line-height: 124px;
+  font-weight: 700;
+}
