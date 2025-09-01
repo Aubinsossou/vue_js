@@ -1,17 +1,23 @@
 <script setup>
-  defineProps({
-    text_button:{
-      type:String,
-      riquere:true,
-    },
-  })
+defineProps({
+  text_button: {
+    type: String,
+    requered: true,
+  },
+  url: {
+    type: Object,
+    required: false,
+    default:{}
+  },
+})
+
 </script>
 
 <template>
-        <RouterLink to="#">{{ text_button }}</RouterLink>
+  <RouterLink :to="url">{{ text_button }}</RouterLink>
 </template>
 <style scoped>
-  a {
+a {
   background-color: #7a96ff;
   text-align: center;
   width: 90px;
@@ -20,6 +26,6 @@
   border-radius: 35px;
   font-size: 20px;
   font-weight: 700;
+  color: white;
 }
-
 </style>

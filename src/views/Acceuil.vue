@@ -1,25 +1,76 @@
 <script setup>
+import { ref } from 'vue'
+import ServiceList from '../components/ServiceList.vue'
+//import BouttonDecouvrir from '../components/BouttonDecouvrir.vue'
+import iconImg from '../assets/images/icon.png'
+import BouttonDecouvrir from '@/components/BouttonDecouvrir.vue'
+import Typography from '@/components/Typography.vue'
+import Input from '@/components/Input.vue'
 
-  import ServiceList from '../components/ServiceList.vue'
-  //import BouttonDecouvrir from '../components/BouttonDecouvrir.vue'
-  import iconImg from '../assets/images/icon.png'
-  import BouttonDecouvrir from '@/components/BouttonDecouvrir.vue';
 
+const n_name = ref('')
+const n_mail = ref('')
+const n_objet = ref('')
+const n_message = ref('')
+const services = [
+  {
+    id: 1,
+    title: 'service1',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.isi ut aliquip ex ea commodo consequat.',
+    img: iconImg,
+  },
+  {
+    id: 2,
+    title: 'service2',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.isi ut aliquip ex ea commodo consequat.',
+    img: iconImg,
+  },
+  {
+    id: 3,
+    title: 'service3',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.isi ut aliquip ex ea commodo consequat.',
+    img: iconImg,
+  },
+  {
+    id: 4,
+    title: 'service4',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.isi ut aliquip ex ea commodo consequat.',
+    img: iconImg,
+  },
+]
+console.log('services: ', services)
+
+function verify() {
+  if (
+    n_name.value !== '' &&
+    n_mail.value !== '' &&
+    n_objet.value !== '' &&
+    n_message.value !== ''
+  ) {
+    console.log(n_name.value, n_mail.value, n_objet.value, n_message.value)
+  } else {
+    console.log('Veuillez remplir tous les champs')
+  }
+}
 </script>
 <template>
+  <Typography tag="h1" text="Ma page d'accueil" />
   <section class="banner">
     <div class="container">
       <div class="banner_content">
         <div class="banner_left">
-          <h1 class="banner_left_title">Work Hard</h1>
+          <Typography tag="h1" text="Work Hard" class="banner_left_title" />
+
           <p class="banner_left_text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
             exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure .
           </p>
-          <BouttonDecouvrir
-              text_button="Découvrir"
-             />
+          <BouttonDecouvrir text_button="Découvrir" />
         </div>
         <div class="banner_right">
           <img src="../assets/images/image.png" alt="banner_image" />
@@ -31,53 +82,25 @@
   <section class="services">
     <div class="container">
       <div class="services_content">
-        <h2 class="service_title">Nos services</h2>
+        <Typography tag="h2" text="Nos-Services" />
         <p class="service_description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua.isi ut aliquip ex ea commodo consequat.
         </p>
         <div class="services_list">
-
+          <div v-for="service in services">
             <ServiceList
-              :url_img="iconImg"
-              title="Service1"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.isi ut aliquip ex ea commodo consequat."
-            ><BouttonDecouvrir
-              text_button="Découvrir"
-            />
-            </ServiceList>
-            <ServiceList
-              :url_img="iconImg"
-              title="Service2"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.isi ut aliquip ex ea commodo consequat."
-            ><BouttonDecouvrir
-              text_button="Découvrir"
-            />
-            </ServiceList>
-            <ServiceList
-              :url_img="iconImg"
-              title="Service3"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.isi ut aliquip ex ea commodo consequat."
-            ><BouttonDecouvrir
-              text_button="Découvrir"
-            />
-            </ServiceList>
-            <ServiceList
-              :url_img="iconImg"
-              title="Service4"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.isi ut aliquip ex ea commodo consequat."
+              :id="service.id"
+              :url_img="service.img"
+              :title="service.title"
+              :description="service.description"
             >
-            <BouttonDecouvrir
-              text_button="Découvrir"
-             />
+              <BouttonDecouvrir
+                text_button="Découvrir"
+                :url="{ name: 'detail', params: { id: service.id } }"
+              />
             </ServiceList>
-
-
-
+          </div>
         </div>
       </div>
     </div>
@@ -86,33 +109,27 @@
   <section class="formulaire">
     <div class="container">
       <div class="formulaire_content">
-        <h2 class="formulaire_content_title">Pour nous contactez</h2>
+        <Typography tag="h2" text="Contactez-Nous" classe="formulaire_content_title" />
 
-        <form action="" id="form" method="">
+       <form action="" id="form" method="">
           <div class="formulaire_list">
             <label for="nom">Nom et prénom :</label>
-            <input
-              type="text"
-              id="name"
-              placeholder="Nom et prénom"
-              autocomplete="none"
-              class="input"
-            />
+            <Input tag="input" id="name" class="input" type="text" placeholder="Nom et prénom"autocomplete="none"/>
             <p style="display: none" class="name_message_error"></p>
           </div>
           <div class="formulaire_list">
             <label for="email">Email :</label>
-            <input type="email" id="email" placeholder="Email" class="input" />
+            <Input tag="input" class="input" type="text" placeholder="Email"/>
             <p style="display: none" class="email_message_error"></p>
           </div>
           <div class="formulaire_list">
             <label for="objet">Object :</label>
-            <input type="text" id="Object" placeholder="objet" class="input" />
+            <Input tag="input" class="input" type="text" id="Object" placeholder="objet"/>
             <p style="display: none" class="object"></p>
           </div>
           <div class="formulaire_list">
             <label for="message">Message :</label>
-            <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+            <Input tag="textarea" class="input" name="message" id="message" rows="6" placeholder="Message"/>
           </div>
           <div class="formulaire_button">
             <button id="button" type="submit">Envoyer</button>

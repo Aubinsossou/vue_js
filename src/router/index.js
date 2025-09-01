@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
- import Acceuil from '../views/Acceuil.vue' 
- import Event from '../views/Event.vue' 
- import About from '../views/About.vue' 
- import Contact from '../views/Contact.vue' 
-
+import Acceuil from '../views/Acceuil.vue'
+import Event from '../views/Event.vue'
+import About from '../views/About.vue'
+import Contact from '../views/Contact.vue'
+import Exo from '../views/Exo.vue'
+import Details from '../views/DetailsService.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -28,6 +29,16 @@ const router = createRouter({
       component: Event,
     },
     {
+      path: '/exo',
+      name: 'exo',
+      component: Exo,
+    },
+    {
+      path: '/detail/:id',
+      name: 'detail',
+      component: Details,
+    },
+    {
       path: '/blog',
       name: 'blog',
       // route level code-splitting
@@ -35,6 +46,7 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Blog.vue'),
     },
+
   ],
 })
 
