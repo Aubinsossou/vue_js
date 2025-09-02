@@ -11,7 +11,7 @@
             <span>LOGO</span>
           </RouterLink>
           <ul class="header_right">
-            <li class="header_right_item"><RouterLink to="/">Acceuil</RouterLink></li>
+            <li class="header_right_item"><RouterLink to="/accueil">Acceuil</RouterLink></li>
             <li class="header_right_item"><RouterLink to="blog">Blog</RouterLink></li>
             <li class="header_right_item"><RouterLink to="event">Evènement</RouterLink></li>
             <li class="header_right_item"><RouterLink to="about">A propos</RouterLink></li>
