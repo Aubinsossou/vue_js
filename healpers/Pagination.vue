@@ -46,6 +46,12 @@ function previousPage() {
     page_actuel.value--
   }
 }
+function page_end() {
+  page_actuel.value=33
+}
+function page_start() {
+  page_actuel.value=1
+}
 onMounted(() => {
   fetchData()
 })
@@ -61,14 +67,6 @@ onMounted(() => {
 function page_previous() {
   ;((first.value -= 2), (numb_element_perpage.value -= 2), (page_actuel.value -= 1))
   api()
-}
-function page_end() {
-  console.log('je suis dans end: ')
-}
-function page_start() {
-  console.log('je suis dans start: ')
-  is_disable = true
-  first
 }
  */
 </script>
@@ -123,21 +121,21 @@ function page_start() {
         </div>
 
         <!-- Pagination -->
-        <div class="pagination" v-if="datas.length > numb_element_perpage">
-          <button @click="previousPage" :disabled="page_actuel === 1">Précédent</button>
-          <span>Page {{ page_actuel }} / {{ totalPages }}</span>
-          <button @click="nextPage" :disabled="page_actuel === totalPages">Suivant</button>
-        </div>
+        <!-- <div class="pagination" >
+          <button @click="previousPage" >Précédent</button>
+          <span></span>
+          <button @click="nextPage" >Suivant</button>
+        </div> -->
       </div>
     </div>
     <!-- <p>{{ datas[0].name.common}}</p> -->
-  <div class="button_content container">
-    <button @click.prevent="page_start()" class="button_content_3">Première page</button>
-    <button @click.prevent="page_previous()" class="button_content_1">précédent</button>
-    <p :v-model="page_actuel">{{ page_actuel }}</p>
+  <div class="button_content container" v-if="datas.length > numb_element_perpage">
+    <button @click.prevent="page_start()" :disabled="page_actuel===1" class="button_content_3">Première page</button>
+    <button @click="previousPage()" :disabled="page_actuel === 1" class="button_content_1" >précédent</button>
+    <p :v-model="page_actuel">Page {{ page_actuel }} / {{ totalPages }}</p>
     <!-- <span v-model="page_actuel"></span> -->
-    <button @click.prevent="page_next()" class="button_content_2">Suivant</button>
-    <button @click.prevent="page_end()" class="button_content_4">Dernière page</button>
+    <button  @click="nextPage()" :disabled="page_actuel === totalPages" class="button_content_2">Suivant</button>
+    <button @click.prevent="page_end()" :disabled="page_actuel===33" class="button_content_4">Dernière page</button>
   </div>
 </template>
 

@@ -2,10 +2,10 @@
 import BouttonDecouvrir from './BouttonDecouvrir.vue';
 import { useRouter } from 'vue-router'
 const isAuthenticated = localStorage.getItem("auth")
-const route=useRouter
+const route=useRouter()
 function deconnexion () {
   localStorage.removeItem("auth")
-  route.path.push="/"
+  route.push('/')
 }
 </script>
 <template>
