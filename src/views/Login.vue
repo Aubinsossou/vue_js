@@ -1,38 +1,34 @@
 <script setup>
 import Input from '@/components/Input.vue'
 import Typography from '@/components/Typography.vue'
-
-import { ref } from "vue"
-import { useRouter } from "vue-router"
-
-const email = ref("")
-const password = ref("")
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+const email = ref('')
+const password = ref('')
 const router = useRouter()
 
 const login = () => {
-  if (email.value === "boris@gmail.com" && password.value === "123456") {
-
-    localStorage.setItem("auth", "true")
-    router.push("/accueil")
+  if (email.value === 'boris@gmail.com' && password.value === '123456') {
+    localStorage.setItem('auth', 'true')
+    router.push('/accueil')
   } else {
-    
-    alert("Email ou mot de passe incorrect")
-
+    console.log('password.value: ', password.value)
+    console.log('email.value: ', email.value)
+    alert('Email ou mot de passe incorrect')
   }
 }
-
 </script>
 <template>
   <div class="auth">
     <form class="form auth-form">
-      <Typography tag="h2" text="Connexion"/>
+      <Typography tag="h2" text="Connexion" />
       <div class="form_item">
         <label for="email">Email</label>
-        <input v-model="email" tag="input"type="email" name="email" />
+        <input tag="input" v-model="email" type="email" name="email" />
       </div>
       <div class="form_item">
         <label for="password">Password</label>
-        <input v-model="password" tag="input"type="password" name="password" />
+        <input tag="input" type="password" v-model="password" name="password" />
       </div>
       <div class="form_item">
         <RouterLink @click.prevent="login()" to="/">Se connecter</RouterLink>
@@ -40,7 +36,6 @@ const login = () => {
     </form>
   </div>
 </template>
-
 <style scoped>
 input {
   width: 100%;

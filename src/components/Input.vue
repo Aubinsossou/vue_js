@@ -5,13 +5,16 @@ defineProps({
     type: String,
     default: "input",
   },
-
+  // v_model: {
+  //   type: String,
+  //   default: "",
+  // },
 
 })
 </script>
 
 <template>
-  <component :is="tag">
+  <component :is="tag" >
 
   </component>
 </template>

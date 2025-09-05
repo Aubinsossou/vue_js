@@ -14,9 +14,6 @@
     },
   })
 </script>
-
-
-
 <template>
    <component :is="tag" :class="classe" >
     {{text}}

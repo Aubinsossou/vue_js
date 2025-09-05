@@ -1,17 +1,16 @@
 <script setup>
-import { ref } from 'vue'
+//import { ref } from 'vue'
 import ServiceList from '../components/ServiceList.vue'
-//import BouttonDecouvrir from '../components/BouttonDecouvrir.vue'
+
 import iconImg from '../assets/images/icon.png'
 import BouttonDecouvrir from '@/components/BouttonDecouvrir.vue'
 import Typography from '@/components/Typography.vue'
 import Input from '@/components/Input.vue'
 
-
-const n_name = ref('')
-const n_mail = ref('')
-const n_objet = ref('')
-const n_message = ref('')
+// const n_name = ref('')
+// const n_mail = ref('')
+// const n_objet = ref('')
+// const n_message = ref('')
 const services = [
   {
     id: 1,
@@ -44,18 +43,18 @@ const services = [
 ]
 console.log('services: ', services)
 
-function verify() {
-  if (
-    n_name.value !== '' &&
-    n_mail.value !== '' &&
-    n_objet.value !== '' &&
-    n_message.value !== ''
-  ) {
-    console.log(n_name.value, n_mail.value, n_objet.value, n_message.value)
-  } else {
-    console.log('Veuillez remplir tous les champs')
-  }
-}
+// function verify() {
+//   if (
+//     n_name.value !== '' &&
+//     n_mail.value !== '' &&
+//     n_objet.value !== '' &&
+//     n_message.value !== ''
+//   ) {
+//     console.log(n_name.value, n_mail.value, n_objet.value, n_message.value)
+//   } else {
+//     console.log('Veuillez remplir tous les champs')
+//   }
+// }
 </script>
 <template>
   <Typography tag="h1" text="Ma page d'accueil" />
@@ -111,25 +110,32 @@ function verify() {
       <div class="formulaire_content">
         <Typography tag="h2" text="Contactez-Nous" classe="formulaire_content_title" />
 
-       <form action="" id="form" method="">
+        <form action="" id="form" method="">
           <div class="formulaire_list">
             <label for="nom">Nom et prénom :</label>
-            <Input tag="input" id="name" class="input" type="text" placeholder="Nom et prénom"autocomplete="none"/>
+            <Input tag="input" id="name" class="input" type="text" placeholder="Nom et prénom" />
             <p style="display: none" class="name_message_error"></p>
           </div>
           <div class="formulaire_list">
             <label for="email">Email :</label>
-            <Input tag="input" class="input" type="text" placeholder="Email"/>
+            <Input tag="input" class="input" type="text" placeholder="Email" />
             <p style="display: none" class="email_message_error"></p>
           </div>
           <div class="formulaire_list">
             <label for="objet">Object :</label>
-            <Input tag="input" class="input" type="text" id="Object" placeholder="objet"/>
+            <Input tag="input" class="input" type="text" id="Object" placeholder="objet" />
             <p style="display: none" class="object"></p>
           </div>
           <div class="formulaire_list">
             <label for="message">Message :</label>
-            <Input tag="textarea" class="input" name="message" id="message" rows="6" placeholder="Message"/>
+            <Input
+              tag="textarea"
+              class="input"
+              name="message"
+              id="message"
+              rows="6"
+              placeholder="Message"
+            />
           </div>
           <div class="formulaire_button">
             <button id="button" type="submit">Envoyer</button>

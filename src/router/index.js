@@ -6,6 +6,8 @@ import Contact from '../views/Contact.vue'
 import Exo from '../views/Exo.vue'
 import Details from '../views/DetailsService.vue'
 import Login from '../views/Login.vue'
+import Pagination from '../../healpers/Pagination.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -60,11 +62,15 @@ const router = createRouter({
       component: Exo,
       meta: { requiresAuth: true },
     },
+    {
+      path: '/pagination',
+      name: 'pagination',
+      component: Pagination
+    },
   ],
 })
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem("auth") === "true"
-
+  const isAuthenticated = localStorage.getItem("auth")
   if (to.meta.requiresAuth && !isAuthenticated) {
     alert("Veillez vous authentifier")
     next("/")
