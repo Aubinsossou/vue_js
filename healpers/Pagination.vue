@@ -47,10 +47,10 @@ function previousPage() {
   }
 }
 function page_end() {
-  page_actuel.value=33
+  page_actuel.value = 33
 }
 function page_start() {
-  page_actuel.value=1
+  page_actuel.value = 1
 }
 onMounted(() => {
   fetchData()
@@ -71,71 +71,70 @@ function page_previous() {
  */
 </script>
 <template>
-    <div class="container">
-      <div v-if="loading">Chargement...</div>
-      <div v-else class="countrie">
-        <div class="countrie_item" v-for="data in paginatedData" :key="data.cca3">
-          <div class="countrie_item_part1">
-            <span class="img_pays">
-              <img :src="data.flags.svg" alt="" />
+  <div class="container">
+    <div v-if="loading">Chargement...</div>
+    <div v-else class="countrie">
+      <div class="countrie_item" v-for="data in paginatedData" :key="data.cca3">
+        <div class="countrie_item_part1">
+          <span class="img_pays">
+            <img :src="data.flags.svg" alt="" />
+          </span>
+          <h2 class="name_pays">Pays: {{ data.name.common }}</h2>
+          <br />
+        </div>
+        <div class="countrie_item_part2">
+          <img v-if="data.coatOfArms?.png" :src="data.coatOfArms.png" alt="" class="devise_pays" />
+        </div>
+        <div class="countrie_item_part3">
+          <h3>Langue: {{ getFirstLanguage(data.languages) }}</h3>
+          <h3>Population: {{ data.population?.toLocaleString() }}</h3>
+          <h3>Capitale: {{ data.capital?.[0] || 'N/A' }}</h3>
+          <div class="countrie_content_part3_icon">
+            <span>
+              <img src="../src/assets/images/icon.png" alt="" class="countrie_item_part3_icon_1" />
             </span>
-            <h2 class="name_pays">Pays: {{ data.name.common }}</h2>
-            <br />
-          </div>
-          <div class="countrie_item_part2">
-            <img
-              v-if="data.coatOfArms?.png"
-              :src="data.coatOfArms.png"
-              alt=""
-              class="devise_pays"
-            />
-          </div>
-          <div class="countrie_item_part3">
-            <h3>Langue: {{ getFirstLanguage(data.languages) }}</h3>
-            <h3>Population: {{ data.population?.toLocaleString() }}</h3>
-            <h3>Capitale: {{ data.capital?.[0] || 'N/A' }}</h3>
-            <div class="countrie_content_part3_icon">
-              <span>
-                <img
-                  src="../src/assets/images/icon.png"
-                  alt=""
-                  class="countrie_item_part3_icon_1"
-                />
-              </span>
-              <span>
-                <img
-                  src="../src/assets/images/icon_3.png"
-                  alt=""
-                  class="countrie_item_part3_icon_1"
-                />
-              </span>
-              <span>
-                <img
-                  src="../src/assets/images/icon_2.png"
-                  alt=""
-                  class="countrie_item_part3_icon_1"
-                />
-              </span>
-            </div>
+            <span>
+              <img
+                src="../src/assets/images/icon_3.png"
+                alt=""
+                class="countrie_item_part3_icon_1"
+              />
+            </span>
+            <span>
+              <img
+                src="../src/assets/images/icon_2.png"
+                alt=""
+                class="countrie_item_part3_icon_1"
+              />
+            </span>
           </div>
         </div>
+      </div>
 
-        <!-- Pagination -->
-        <!-- <div class="pagination" >
+      <!-- Pagination -->
+      <!-- <div class="pagination" >
           <button @click="previousPage" >Précédent</button>
           <span></span>
           <button @click="nextPage" >Suivant</button>
         </div> -->
-      </div>
     </div>
-    <!-- <p>{{ datas[0].name.common}}</p> -->
+  </div>
+  <!-- <p>{{ datas[0].name.common}}</p> -->
   <div class="button_content container" v-if="datas.length > numb_element_perpage">
-    <button @click.prevent="page_start()" :disabled="page_actuel===1" class="button_content_3">Première page</button>
-    <button @click="previousPage()" :disabled="page_actuel === 1" class="button_content_1" >précédent</button>
+    <button @click.prevent="page_start()" :disabled="page_actuel === 1" class="button_content_3">
+      Première page
+    </button>
+    <button @click="previousPage()" :disabled="page_actuel === 1" class="button_content_1">
+      précédent
+    </button>
     <p :v-model="page_actuel">Page {{ page_actuel }} / {{ totalPages }}</p>
     <!-- <span v-model="page_actuel"></span> -->
-    <button  @click="nextPage()" :disabled="page_actuel === totalPages" class="button_content_2">Suivant</button>
-    <button @click.prevent="page_end()" :disabled="page_actuel===33" class="button_content_4">Dernière page</button>
+    <button @click="nextPage()" :disabled="page_actuel === totalPages" class="button_content_2">
+      Suivant
+    </button>
+    <button @click.prevent="page_end()" :disabled="page_actuel === 33" class="button_content_4">
+      Dernière page
+    </button>
   </div>
 </template>
 
@@ -264,7 +263,7 @@ function page_previous() {
   height: 150px;
 }
 
-/* 
+/*
 <div class="countrie_item" v-for="data in datas">
       <div class="countrie_item_part1">
         <span class="img_pays"><img :src="data[x].flags.svg" alt="" /></span>

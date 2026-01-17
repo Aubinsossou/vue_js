@@ -3,7 +3,10 @@ import { ref } from 'vue'
 import Typography from '@/components/Typography.vue'
 const count = ref(0)
 console.log('count: ', count)
-count.value = 7
+ const counted=()=>{
+  count.value++
+ }
+// setInterval(counted,1000)
 </script>
 
 <template>
@@ -13,8 +16,9 @@ count.value = 7
 
 
     <h1>Compteur : {{ count }}</h1> 
-    <button v-on:click="count++">Incrémenter</button>
+    <button v-on:click="counted">Incrémenter</button>
     <button @click="count--">Décrémenter</button>
+    <progress :value="count" max="20" style="width: 100%; accent-color: #eff224;"></progress>
   </div>
 </template>
 

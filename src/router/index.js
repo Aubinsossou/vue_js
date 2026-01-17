@@ -6,18 +6,24 @@ import Contact from '../views/Contact.vue'
 import Exo from '../views/Exo.vue'
 import Details from '../views/DetailsService.vue'
 import Login from '../views/Login.vue'
+import Api from '../components/countries.vue'
 import Pagination from '../../healpers/Pagination.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '/login',
       name: 'login',
       component: Login
     },
     {
-      path: '/accueil',
+      path: '/api',
+      name: 'api',
+      component: Api
+    },
+    {
+      path: '/',
       name: 'acceuil',
       component: Acceuil,
       meta: { requiresAuth: true },
@@ -69,13 +75,13 @@ const router = createRouter({
     },
   ],
 })
-router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem("auth")
-  if (to.meta.requiresAuth && !isAuthenticated) {
-    alert("Veillez vous authentifier")
-    next("/")
-  } else {
-    next()
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   const isAuthenticated = localStorage.getItem("auth")
+//   if (to.meta.requiresAuth && !isAuthenticated) {
+//     alert("Veillez vous authentifier")
+//     next("/")
+//   } else {
+//     next()
+//   }
+// })
 export default router

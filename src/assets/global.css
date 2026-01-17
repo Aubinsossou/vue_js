@@ -8,6 +8,10 @@
   font-family: system-ui;
 }
 
+button{
+  border: none;
+}
+
 a{
     text-decoration:none;
 }
@@ -97,6 +101,11 @@ main.main {
   border-radius: 6px;
   transition: 0.5s;
 }
+.services_list_item:hover {
+
+  transform: scale(1.1);
+}
+
 .services_list_item img {
   display: inline-block;
   width: 64px;
@@ -122,6 +131,7 @@ main.main {
 /*FOOTER*/
 
 .footer {
+  margin-top: 35px;
   background-color: #2d5298;
 }
 .footer_content {

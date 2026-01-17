@@ -14,26 +14,27 @@ function deconnexion () {
         <div class="header_content">
 
           <RouterLink to="/" class="header_left">
-            <span>LOGO</span>
+            <span style="color:white; font-weight: 900">LOGO</span>
           </RouterLink>
           <ul class="header_right">
-            <li class="header_right_item"><RouterLink to="/accueil">Acceuil</RouterLink></li>
+            <li class="header_right_item"><RouterLink to="/">Acceuil</RouterLink></li>
+            <li class="header_right_item"><RouterLink to="api">Api</RouterLink></li>
             <li class="header_right_item"><RouterLink to="blog">Blog</RouterLink></li>
             <li class="header_right_item"><RouterLink to="event">Evènement</RouterLink></li>
             <li class="header_right_item"><RouterLink to="about">A propos</RouterLink></li>
             <li class="header_right_item"><RouterLink to="contact">Contact</RouterLink></li>
           </ul>
-        <div class="btn-connexion">
-          <BouttonDecouvrir to="/" text_button="Connexion" class="btn-login" v-if="!isAuthenticated"/>
+        <!-- <div class="btn-connexion">
+          <BouttonDecouvrir to="/login" text_button="Connexion" class="btn-login" v-if="!isAuthenticated"/>
           <BouttonDecouvrir @click.prevent="deconnexion()" text_button="Déconnexion" class="btn-logout" v-if="isAuthenticated"/>
-        </div>
+        </div> -->
         </div>
       </div>
     </header>
 </template>
 
 <style scoped>
-  
+
   .btn-login {
     color: white;
     padding: 7px 15px;
